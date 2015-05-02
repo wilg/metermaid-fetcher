@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/wilg/metermaid
-  revision: c3851df15927be7423dd0f165ee24451d3746da5
+  revision: b3a44f2c3811ed307da3be7ca6ccb8148cf36825
   specs:
     metermaid (0.0.1)
       activerecord

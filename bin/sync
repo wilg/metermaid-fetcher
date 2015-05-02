@@ -1,0 +1,5 @@
+#!/bin/bash
+
+bundle update metermaid &&
+git add . &&
+git commit -m "Update metermaid gem"

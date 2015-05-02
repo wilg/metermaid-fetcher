@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/wilg/metermaid
-  revision: a3d2f5727ed61195b09bb8d460ccb4a9f82353b9
+  revision: bd59a3f4906d7115daf08a2a370a36b3dbc2bcf9
   specs:
     metermaid (0.0.1)
       activerecord
@@ -53,6 +53,7 @@ GEM
       mini_portile (~> 0.6.0)
     ntlm-http (0.1.1)
     pg (0.18.1)
+    rake (10.4.2)
     rubyzip (1.1.7)
     sparsify (1.0.1)
     thor (0.19.1)
@@ -69,3 +70,4 @@ PLATFORMS
 
 DEPENDENCIES
   metermaid!
+  rake

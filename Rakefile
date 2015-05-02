@@ -1,7 +1,7 @@
 namespace :db do
 
   desc "import from db"
-  task :import, do |t|
+  task :import do |t|
     Bundler.require(:default)
 
     store = Metermaid::ActiveRecordStore.new
@@ -19,7 +19,7 @@ namespace :db do
         end_date: Time.now,
       )
       result.each do |row|
-        Metermaid::DB::MetermaidSample.where(row).first_or_create
+        Metermaid::DB::Sample.where(row).first_or_create
       end
 
     end

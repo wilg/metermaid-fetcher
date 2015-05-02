@@ -1,23 +1,31 @@
 namespace :db do
 
   desc "import from db"
-  task :import, [:user, :password] => []  do |t, args|
+  task :import, do |t|
     Bundler.require(:default)
 
     store = Metermaid::ActiveRecordStore.new
     store.open!
 
-    result = Metermaid::PGandE::Fetcher.scrape!(
-      username: args[:user],
-      password: args[:password],
-      start_date: 1.month.ago,
-      end_date: Time.now,
-    )
-    result.each do |row|
-      Metermaid::DB::MetermaidSample.where(row).first_or_create
+    # CREDENTIALS=username,password;username2;password2
+    ENV["CREDENTIALS"].split(";").each do |credentials|
+
+      (username, password) = credentials.split(",")
+
+      result = Metermaid::PGandE::Fetcher.scrape!(
+        username: username,
+        password: password,
+        start_date: 1.month.ago,
+        end_date: Time.now,
+      )
+      result.each do |row|
+        Metermaid::DB::MetermaidSample.where(row).first_or_create
+      end
+
     end
 
     store.close!
+
   end
 
 end
